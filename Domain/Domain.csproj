@@ -43,11 +43,13 @@
     <Compile Include="BaseClass\EntityBase.cs" />
     <Compile Include="BaseClass\IValidable.cs" />
     <Compile Include="BaseClass\IVersionable.cs" />
+    <Compile Include="BaseClass\ValidatableExtensions.cs" />
     <Compile Include="Customization.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
     <Compile Include="OrderStatus.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
