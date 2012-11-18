@@ -7,51 +7,22 @@ using System.Xml.Serialization;
 
 namespace Application.Dto
 {
-    public class OrderItemDto : IXmlSerializable
-    {
-        public OrderItemDto()
-        {
-            Preferences = new Dictionary<string, string>();
-        }
+   public class OrderItemDto
+   {
+      #region Properties
 
-        public string Name { get; set; }
-        public int Quantity { get; set; }
-        
-        [XmlIgnore]
-        public IDictionary<string, string > Preferences { get; set; }
+      public string Name { get; set; }
+      public int Quantity { get; set; }
+      public List<KeyValuePair<string, string>> Preferences { get; set; }
+      #endregion
 
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
+      #region Constructors
 
-        public void ReadXml(XmlReader reader)
-        {
-            var standardNames = new[] {"name", "quantity"};
-            var node =  (XElement)XNode.ReadFrom(reader);
-            
-            var nameElement = node.Element(XName.Get("name", "http://restbuckson.net"));
-            if (nameElement != null) Name = nameElement.Value;
+      public OrderItemDto()
+      {
+         Preferences = new List<KeyValuePair<string, string>>();
+      }
 
-            Quantity = (int)node.Element(XName.Get("quantity", "http://restbuckson.net"));
-            Preferences = node.Elements()
-                .Where(x => !standardNames.Contains(x.Name.LocalName))
-                .ToDictionary(x => x.Name.LocalName, x=> x.Value);
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            writer.WriteElementString("name", Name);
-            
-            writer.WriteStartElement("quantity");
-            writer.WriteValue(Quantity);
-            writer.WriteEndElement();
-
-            foreach (var preference in Preferences)
-            {
-                writer.WriteElementString(preference.Key, preference.Value);
-            }
-
-        }
-    }
+      #endregion
+   }
 }

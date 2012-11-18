@@ -2,28 +2,34 @@
 using System.Xml.Serialization;
 using Application.Dto.Base;
 using Domain;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Application.Dto
 {
-   [XmlRoot(ElementName = "order", Namespace = "http://restbuckson.net")]
    public class OrderDto : DtoBase
    {
+      #region Fields
+
+      [JsonConverter(typeof (StringEnumConverter))]
+      public Location Location { get; set; }
+
+      public decimal Cost { get; set; }
+
+      public List<OrderItemDto> Items { get; set; }
+
+      [JsonConverter(typeof (StringEnumConverter))]
+      public OrderStatus Status { get; set; }
+
+      #endregion
+
+      #region Constructors
+
       public OrderDto()
       {
          Items = new List<OrderItemDto>();
       }
 
-      [XmlElement(ElementName = "location")]
-      public Location Location { get; set; }
-
-      [XmlElement(ElementName = "cost")]
-      public decimal Cost { get; set; }
-
-      [XmlArray(ElementName = "items"), XmlArrayItem(ElementName = "item")]
-      public List<OrderItemDto> Items { get; set; }
-
-      [XmlElement(ElementName = "status")]
-      public OrderStatus Status { get; set; }
+      #endregion
    }
-
 }

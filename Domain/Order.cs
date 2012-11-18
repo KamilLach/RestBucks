@@ -8,22 +8,22 @@ namespace Domain
 {
    public class Order : EntityBase, IValidable
    {
-      private readonly ISet<OrderItem> m_items;
+      private readonly ICollection<OrderItem> _items;
 
       public Order()
       {
-         m_items = new HashSet<OrderItem>();
+         _items = new HashSet<OrderItem>();
          Status = OrderStatus.Unpaid;
       }
 
       public virtual DateTime Date { get; set; }
       public virtual OrderStatus Status { get; set; }
       public virtual Location Location { get; set; }
-      public virtual string CancelReason { get; private set; }
+      public virtual string CancelReason { get; protected set; }
 
-      public virtual IEnumerable<OrderItem> Items
+      public virtual ICollection<OrderItem> Items
       {
-         get { return m_items; }
+         get { return _items; }
       }
 
       public virtual decimal Total
@@ -31,7 +31,7 @@ namespace Domain
          get { return Items.Sum(a_i => a_i.Quantity*a_i.UnitPrice); }
       }
 
-      public virtual Payment Payment { get; private set; }
+      public virtual Payment Payment { get; protected set; }
 
       #region IValidable Members
 
@@ -62,7 +62,7 @@ namespace Domain
                              Status.ToString().ToLower()));
          }
          a_orderItem.Order = this;
-         m_items.Add(a_orderItem);
+         _items.Add(a_orderItem);
       }
 
       public virtual void Cancel(string a_cancelReason)

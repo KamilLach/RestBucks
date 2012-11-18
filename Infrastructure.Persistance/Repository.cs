@@ -13,23 +13,22 @@ namespace Infrastructure.Persistance
    public class Repository<T> : IRepository<T>
    {
       private readonly ISession m_session;
-      private readonly ISessionFactory m_sessionFactory;
 
       public Repository(ISession a_session)
       {
          m_session = a_session;
       }
 
-      public Repository(ISessionFactory a_sessionFactory)
+      private ISession CurrentSession
       {
-         m_sessionFactory = a_sessionFactory;
+         get { return m_session; }
       }
 
-      private ISession CurrentSession { get { return m_session ?? m_sessionFactory.GetCurrentSession(); } }
+      #region IRepository<T> Members
 
       public void MakePersistent(params T[] a_entities)
       {
-         foreach (var entity in a_entities)
+         foreach (T entity in a_entities)
          {
             CurrentSession.Save(entity);
          }
@@ -50,5 +49,7 @@ namespace Infrastructure.Persistance
       {
          return CurrentSession.Query<T>();
       }
+
+      #endregion
    }
 }

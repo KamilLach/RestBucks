@@ -48,6 +48,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SQLite, Version=1.0.81.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -133,12 +136,15 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Models\OrderDtoModel.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ControllerResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceProvider\ResourceLinkProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -195,6 +201,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="docs\order-cancel.htm" />
+    <Content Include="docs\order-create.htm" />
+    <Content Include="docs\order-get.htm" />
+    <Content Include="docs\order-pay.htm" />
+    <Content Include="docs\order-update.htm" />
+    <Content Include="docs\receipt-coffee.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
@@ -242,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -252,9 +263,21 @@
       <Project>{4FE6B096-6DD6-4044-9659-2D68BDE9A8AA}</Project>
       <Name>Application.Dto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Application\Application.csproj">
+      <Project>{23EC76C5-4BF7-4FFE-9BAF-543115825BE4}</Project>
+      <Name>Application %28Application\Application%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{C9EE525F-0839-45F2-B23C-A556AC7460E9}</Project>
       <Name>Domain %28Domain\Domain%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.HyperMedia.Linker\Infrastructure.HyperMedia.Linker.csproj">
+      <Project>{222969A2-275E-4203-8E9E-DB10D8C00FE2}</Project>
+      <Name>Infrastructure.HyperMedia.Linker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Persistance\Infrastructure.Persistance.csproj">
+      <Project>{D7F2B176-70BE-47D0-A765-02547FBAC3BA}</Project>
+      <Name>Infrastructure.Persistance</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{4D7A3BF0-9C82-4CE8-8303-7BAD65102581}</Project>

@@ -49,6 +49,7 @@
     <Compile Include="MenuDto.cs" />
     <Compile Include="OrderItemDto.cs" />
     <Compile Include="OrderDto.cs" />
+    <Compile Include="OrderLocationDto.cs" />
     <Compile Include="PaymentDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

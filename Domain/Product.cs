@@ -5,19 +5,19 @@ namespace Domain
 {
    public class Product : EntityBase
    {
-      private readonly ISet<Customization> m_customizations;
+      private readonly ICollection<Customization> _customizations;
 
       public Product()
       {
-         m_customizations = new HashSet<Customization>();
+         _customizations = new HashSet<Customization>();
       }
 
       public virtual string Name { get; set; }
       public virtual decimal Price { get; set; }
 
-      public virtual ISet<Customization> Customizations
+      public virtual ICollection<Customization> Customizations
       {
-         get { return m_customizations; }
+         get { return _customizations; }
       }
    }
 }

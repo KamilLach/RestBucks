@@ -5,18 +5,18 @@ namespace Domain
 {
     public class Customization : EntityBase
     {
-        private readonly ISet<string> m_possibleValues;
+       protected readonly ICollection<string> _possibleValues;
         
         public Customization()
         {
-            m_possibleValues = new HashSet<string>();
+            _possibleValues = new HashSet<string>();
         }
 
         public virtual string Name { get; set; }
 
-        public virtual ISet<string> PossibleValues
+        public virtual ICollection<string> PossibleValues
         {
-            get { return m_possibleValues; }
+           get { return _possibleValues; }
         }
     }
 }
