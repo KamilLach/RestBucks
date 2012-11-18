@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestBucks.WebApi", "RestBucks.WebApi\RestBucks.WebApi.csproj", "{1A4BD6E2-033C-4C4B-9DC3-3970C78DBC85}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{63B14C29-C377-45CE-A0F8-436F8F16BB3C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{CB5FF996-078B-4BC4-899D-A331E18DEC18}"
@@ -25,16 +23,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.HyperMedia.Linker", "Infrastructure.HyperMedia.Linker\Infrastructure.HyperMedia.Linker.csproj", "{222969A2-275E-4203-8E9E-DB10D8C00FE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestBucks.WebApi", "RestBucks.WebApi\RestBucks.WebApi.csproj", "{55991470-7978-451B-98C4-E149DCC812CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1A4BD6E2-033C-4C4B-9DC3-3970C78DBC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A4BD6E2-033C-4C4B-9DC3-3970C78DBC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A4BD6E2-033C-4C4B-9DC3-3970C78DBC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A4BD6E2-033C-4C4B-9DC3-3970C78DBC85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FE6B096-6DD6-4044-9659-2D68BDE9A8AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FE6B096-6DD6-4044-9659-2D68BDE9A8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE6B096-6DD6-4044-9659-2D68BDE9A8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +59,10 @@ Global
 		{222969A2-275E-4203-8E9E-DB10D8C00FE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{222969A2-275E-4203-8E9E-DB10D8C00FE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{222969A2-275E-4203-8E9E-DB10D8C00FE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55991470-7978-451B-98C4-E149DCC812CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55991470-7978-451B-98C4-E149DCC812CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55991470-7978-451B-98C4-E149DCC812CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55991470-7978-451B-98C4-E149DCC812CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,6 +4,7 @@ using Domain;
 using Infrastructure.Exceptions;
 using NUnit.Framework;
 using SharpTestsEx;
+using Test.Domain.Mocks;
 
 namespace Test.Domain
 {
@@ -15,7 +16,7 @@ namespace Test.Domain
       [SetUp]
       public void SetUp()
       {
-         DtoMapper mapper = new DtoMapper();
+         DtoMapper mapper = new DtoMapper(new LinkProvider());
          m_order = new Order();
          m_order.Cancel("You are too slow.");
          m_dto = mapper.Map<Order, OrderDto>(m_order);

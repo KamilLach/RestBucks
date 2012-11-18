@@ -1,4 +1,5 @@
-﻿using Application.Dto;
+﻿using System;
+using Application.Dto;
 using AutoMapper;
 using Domain;
 using Infrastructure;
@@ -7,13 +8,21 @@ namespace Application
 {
    public class DtoMapper : IDtoMapper
    {
+      private readonly IResourceLinkProvider m_linkProvider;
+
       #region Constructors
 
       /// <summary>
       /// Initializes a new instance of the <see cref="T:System.Object"/> class.
       /// </summary>
-      public DtoMapper()
+      public DtoMapper(IResourceLinkProvider a_linkProvider)
       {
+         if (a_linkProvider == null)
+         {
+            throw new ArgumentNullException("a_linkProvider");
+         }
+
+         m_linkProvider = a_linkProvider;
          ConfigureMapper();
       }
 
@@ -26,7 +35,13 @@ namespace Application
          Mapper.Initialize(a_cfg =>
                               {
                                  a_cfg.CreateMap<Order, OrderDto>(MemberList.Source)
-                                    .ForMember(a_src => a_src.Links, a_expr => a_expr.ResolveUsing<DtoLinkMapperResolver>());
+                                    .AfterMap((a_src, a_dest) =>
+                                                 {
+                                                    foreach (ILink link in m_linkProvider.GetLinks(a_src))
+                                                    {
+                                                       a_dest.Links.Add(link);
+                                                    }
+                                                 });
                                  a_cfg.CreateMap<OrderItem, OrderItemDto>(MemberList.Source);
                                  a_cfg.CreateMap<Payment, PaymentDto>(MemberList.Source);
                               });
